@@ -1,0 +1,43 @@
+body {
+    background-color: yellow;
+    padding: 0;
+    margin: 0;
+    /*
+    height: 100vh;
+    display: flex;
+    */
+    transition: background 0.5s ease;
+}
+
+body.video {
+    background-color: black;
+}
+
+.splide {
+    /*
+    margin: auto;
+    */
+}
+
+
+.splide__slide{
+    _display: flex;
+}
+
+.splide__slide img {
+    margin : auto;
+    /*
+    width:100vw;
+    
+    width : 100%;
+    height: auto;
+    */
+    
+    width : 100vw;
+    _height: 100vh;
+}
+
+video {
+    width : 100vw;
+    _height: 100vh;
+}

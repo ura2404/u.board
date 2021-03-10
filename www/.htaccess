@@ -1,0 +1,6 @@
+<Files *.json>
+    Deny from all
+</Files>
+
+RewriteEngine on
+RewriteBase /u.board
