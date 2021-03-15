@@ -1,4 +1,4 @@
-var AdvInterval = 5000;
+var AdvInterval = 35000;
 var Player = '<video autoplay="true" _loop="true" muted="muted"><source src="data/play.mp4" type="video/mp4" /></video>';
 
 var _fun = function(){
@@ -21,7 +21,7 @@ var _slider = function(){
     new Splide( '.splide' ,{
         
         autoplay : true,
-        interval : 2000,
+        interval : 10000,
         rewind   : true,
         
         pagination : false,
