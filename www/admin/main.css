@@ -1,0 +1,13 @@
+html {
+    font-size: 22px;
+}
+
+.cm-check {
+    display: none;
+}
+
+.cm-home,
+.cm-check {
+    font-size: 1.5rem;
+    margin : auto 0;
+}

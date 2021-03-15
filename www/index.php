@@ -1,6 +1,1 @@
-<?php
-    $Root = dirname(__FILE__);
-    $Config = json_decode(file_get_contents($Root.'/config.json'),true)['u.board'];
-
-    header('Location: t/'.$Config['template']);
-?>
+/mnt/md1/home/ura/__WORK__/u.board/templates/base/index.php
