@@ -1,0 +1,78 @@
+{
+    "template" : {
+        "code" : "love",
+        "name" : "Любовь",
+        "descriptor" : "flex + grid страница",
+        "data" : {
+            "_slider" : {
+                "bcolor" : {
+                    "type" : "color",
+                    "value" : "yellow"
+                },
+                "timer" : {
+                    "type" : "integer",
+                    "value" : "2"
+                },
+                "pics" : {
+                    "type" : "list",
+                    "value" : [
+                        {
+                            "type" : "file",
+                            "value" : "ub1.jpg"
+                        },
+                        {
+                            "type" : "file",
+                            "value" : "ub2.jpg"
+                        },
+                        {
+                            "type" : "file",
+                            "value" : "ub3.jpg"
+                        },
+                        {
+                            "type" : "file",
+                            "value" : "ub4.png"
+                        }
+                    ]
+                }
+            },
+            "_adv" : {
+                "bcolor" : {
+                    "type" : "color",
+                    "value" : "black"
+                },
+                "timer" : {
+                    "type" : "integer",
+                    "value" : "10"
+                },
+                "video" : {
+                    "type" : "list",
+                    "value" : [
+                        {
+                            "type" : "file",
+                            "value" : "play.mp4"
+                        },
+                        {
+                            "type" : "file",
+                            "value" : "play1.mp4"
+                        }
+                    ]
+                }
+            },
+            "slider" : {
+                "bcolor" : "yellow",
+                "timer" : "2",
+                "pics" : [
+                    "ub1.jpg","ub2.jpg","ub3.jpg","ub4.png"
+                ]
+            },
+            "adv" : {
+                "bcolor" : "black",
+                "timer" : "10",
+                "videos" : [
+                    "play.mp4",
+                    "play1.mp4"
+                ]
+            }
+        }
+    }
+}

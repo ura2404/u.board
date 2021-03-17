@@ -14,6 +14,84 @@
     symlink($Root.'/templates/'.$Template.'/data','data');
     symlink($Root.'/templates/'.$Template.'/tpl','tpl');
     */
+
+    $_form = function($config){
+        $_color = function($code,$data){
+            echo '<input class="h-8" type="color" name="' .$code. '" value="' .$data['value']. '"/>';
+        };
+        
+        $_integer = function($code,$data){
+            echo '<input class="h-8" type="text" name="' .$code. '" value="' .$data['value']. '"/>';
+        };
+        
+        $_element = function($code,$data) use($_color,$_integer){
+            echo '<div>' .$data['name']. '</div>';
+            if($data['type'] === 'color') $_color($code,$data);
+            elseif($data['type'] === 'integer') $_integer($code,$data);
+        };
+        
+        echo '<form class="cm-form grid grid-cols-2 gap-1.5" method="post">';
+        array_map(function($code,$data) use($_element){
+            if($data['type'] === 'group'){
+                echo '<div class="col-span-2 bg-gray-400 text-white">' .$data['name']. '</div>';
+                array_map(function($code,$data) use($_element){
+                    $_element($code,$data);
+                },array_keys($data['list']),array_values($data['list']));
+                echo '<div class="col-span-2 h-4"></div>';
+            }
+            else $_element($code,$data);
+        },array_keys($config['data']),array_values($config['data']));
+        echo '<form>';
+    };
+
+    $_main = function() use($Root,$Config,$TemplateCode,$_form){
+        $_template = function($code) use($Root){
+            $Path = $Root.'/templates/'.$code;
+            if(!file_exists($Path) || !file_exists($Path.'/config.json')) return;
+            $Config = json_decode(file_get_contents($Path.'/config.json'),true)['template'];
+            return $Config;
+        };
+        
+        echo '<form class="cm-form grid grid-cols-2 gap-1.5" method="post">';
+        array_map(function($code,$data) use($Root,$TemplateCode,$_template){
+            echo '<div>' .$data['name']. '</div>';
+            
+            if($data['type'] === 'menu'){
+                if($code === 'template'){
+                    echo '<div class="flex">';
+                    echo '<select name="' .$code. '" class="cm-edit cursor-pointer">';
+                    
+                    $Templates = array_filter(scandir($Root.'/templates/'),function($value){
+                        return $value == '.' || $value == '..' ? false : true;
+                    });
+                    
+                    array_map(function($value) use($code,$TemplateCode,$_template){
+                        var_dump($value);
+                        echo '<option value="' .$value. '"' .($TemplateCode === $value ? 'selected="selected"' : null). '>' .($_template($value))['name']. '</option>';
+                    },$Templates);
+                    
+                    echo '</select>';
+                    echo '<i class="cm-tpl-edit ml-2 my-auto fas fa-cog text-gray-700 cursor-pointer"></i>';
+                    echo '</div>';
+                }
+            }
+            else{
+                echo '<input name="' .$code. '" class="cm-edit cursor-pointer" value="' .$data['value']. '">';
+            }
+            
+        },array_keys($Config['data']),array_values($Config['data']));
+        echo '</form>';
+    };
+    
+    $_template = function() use($Template,$_form){
+        echo '<div class="grid grid-cols-2 gap-1.5 auto-rows-max mb-6">';
+        echo '<div>Шаблон</div>';
+        echo '<div>' .$Template['name']. '</div>';
+        echo '<div class="col-span-2 bg-blue-400 text-white">'.$Template['descriptor']. '</div>';
+        echo '</div>';
+        
+        $_form($Template);
+    };
 ?>
 <html>
     <head>
@@ -28,75 +106,30 @@
         <script type="text/javascript" src="../admin/main.js"></script>
     </head>
     <body>
-        <header class="container font-sans mx-auto bg-gray-700 text-white">
-            <!-- <div class="grid justify-items-auto grid-cols-2 p-4"> -->
-            <!-- <div class="grid auto-cols-fr grid-cols-3 p-4"> -->
-            <div class="flex p-4">
-                <div class="cm-template flex-grow overflow-x-hidden">
-                    <span class="text-2xl whitespace-nowrap">
-                        <?php //echo $Config['name']; ?>
-                        u.board
-                        
-                    </span>
-                </div>
-                <div class="cm-control text-right flex">
-                    <i class="cm-home my-auto fas fa-home"></i>
-                    <i class="cm-check my-auto far fa-2x fa-check-circle"></i>
-                </div>
-            <div>
+        <header class="container font-sans mx-auto bg-gray-700 text-white h-10 flex">
+            <div class="cm-template flex-grow overflow-x-hidden">
+                <span class="text-2xl whitespace-nowrap">
+                    <?php //echo $Config['name']; ?>
+                    u.board
+                    
+                </span>
+            </div>
+            <div class="cm-control text-right flex">
+                <i class="cm-home my-auto fas fa-home"></i>
+                <i class="cm-check my-auto fas fa-2x fa-check"></i>
+            </div>
         </header>
-        <div id="main" class="container mx-auto mt-6 p-4 grid grid-cols-2 gap-1.5">
-            <?php
-                //var_dump(array_values($Config['data']));die();
-                
-                $_template = function($code) use($Root){
-                    $Path = $Root.'/templates/'.$code;
-                    if(!file_exists($Path) || !file_exists($Path.'/config.json')) return;
-                    $Config = json_decode(file_get_contents($Path.'/config.json'),true)['template'];
-                    return $Config;
-                };
-                
-                array_map(function($code,$data) use($Root,$_template){
-                    echo '<div>' .$data['name']. '</div>';
-                    
-                    if($data['type'] === 'menu'){
-                        if($code === 'template'){
-                            $Template = $_template($data['value']);
-                            echo '<div>';
-                            echo '<div class="underline cursor-pointer">' .($Template ? $Template['name'] : null). '</div>';
-                            
-                            echo '<ul class="cm-menu">';
-                            $Templaes = array_filter(scandir($Root.'/templates/'),function($value){
-                                return $value == '.' || $value == '..' ? false : true;
-                            });
-                            array_map(function($value){
-                                echo '<li>' .$value. '</li>';
-                            },$Templaes);
-                            echo '</ul>';
-                            
-                            echo '</div>';
-                        }
-                    }
-                    else echo '<div class="underline cursor-pointer">' .$data['value']. '</div>';
-                    
-                },array_keys($Config['data']),array_values($Config['data']));
-            /*
-                foreach($Config['data'] as $code=>$data){
-                    echo '<div>' .$data['name']. '</div>';
-                    
-                    if($type === 'menu'){
-                        echo '<div class="cm-menu underline cursor-pointer">' .$Template['name']. '</div>';
-                        
-                        echo '<ul class="cm-menu">';
-                        echo '<li>111</li>';
-                        echo '<li>222</li>';
-                        echo '</ul>';
-                        
-                        
-                    }else echo '<div class="underline cursor-pointer">' .$data['value']. '</div>';
-                }
-            */
-            ?>
+        <div id="main" class="container mx-auto mt-6 px-3">
+            <?php if(isset($_GET['t'])) $_template(); else $_main(); ?>
+        </div>
+        
+        <div id="power" class="flex cursor-pointer mt-10 mb-10">
+            <i class="cm-power fas fa-3x fa-power-off mx-auto"></i>
+        </div>
+        
+        <div id="cm-message" class="text-center">
+            <span class="cm-ok bg-green-600 text-white py-3 bg-opacity-80">OK</span>
+            <span class="cm-error bg-red-600 text-white py-3 bg-opacity-80">Error</span>
         </div>
     </body>
 </html>

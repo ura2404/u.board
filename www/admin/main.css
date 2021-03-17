@@ -2,12 +2,68 @@ html {
     font-size: 22px;
 }
 
-.cm-check {
-    display: none;
-}
-
 .cm-home,
 .cm-check {
     font-size: 1.5rem;
     margin : auto 0;
+}
+
+input,
+select {
+    border :  1px solid lightgrey;
+    padding : 0 5px;
+    background-color: white;
+    width : 100%;
+}
+
+#cm-message {
+    position: fixed;
+    top : 0;
+    left : 0;
+    width : 100vw;
+    height : 100vh;
+    display: none;
+}
+
+#cm-message > * {
+    margin : auto;
+    width : 0;
+    visibility: hidden;
+    transition: opacity .4s, visibility 1.2s linear .4s;
+}
+
+#cm-message.cm-ok,
+#cm-message.cm-error{
+    display : flex;
+}
+
+#cm-message.cm-ok .cm-ok{
+    width : 100vw;
+    visibility: visible;
+}
+
+#cm-message.cm-error .cm-error{
+    width : 100vw;
+    visibility: visible;
+}
+
+body header .cm-control .cm-home {
+    display: inline;
+}
+
+body header .cm-control .cm-check {
+    display: none;
+}
+
+body.cm-edit header .cm-control .cm-home {
+    display: none;
+}
+
+body.cm-edit header .cm-control .cm-check {
+    display: inline;
+}
+
+body.cm-edit #main .cm-tpl-edit,
+body.cm-edit #power .cm-power {
+    color : rgb(209, 213, 219);
 }

@@ -1,0 +1,94 @@
+{
+    "template" : {
+        "code" : "base",
+        "name" : "Базовый",
+        "descriptor" : "Слайдер изображений на весь экран + плеер видероликов.",
+        "data" : {
+            "_slider" : {
+                "type" : "group",
+                "name" : "Slider",
+                "list" : {
+                    "bcolor" : {
+                        "type" : "color",
+                        "name" : "Цвет фона",
+                        "value" : "#ffff00"
+                    },
+                    "timer" : {
+                        "type" : "integer",
+                        "name" : "Таймер, сек",
+                        "value" : "2"
+                    },
+                    "pics" : {
+                        "type" : "list",
+                        "name" : "Изображения",
+                        "value" : [
+                            {
+                                "type" : "file",
+                                "value" : "ub1.jpg"
+                            },
+                            {
+                                "type" : "file",
+                                "value" : "ub2.jpg"
+                            },
+                            {
+                                "type" : "file",
+                                "value" : "ub3.jpg"
+                            },
+                            {
+                                "type" : "file",
+                                "value" : "ub4.png"
+                            }
+                        ]
+                    }
+                }
+            },
+            "_adv" : {
+                "type" : "group",
+                "name" : "Реклама",
+                "list" : {
+                    "bcolor" : {
+                        "type" : "color",
+                        "name" : "Цвет фона",
+                        "value" : "#000000"
+                    },
+                    "timer" : {
+                        "type" : "integer",
+                        "name" : "Таймер, сек",
+                        "value" : "10"
+                    },
+                    "video" : {
+                        "type" : "list",
+                        "name" : "Видеоролики",
+                        "value" : [
+                            {
+                                "type" : "file",
+                                "value" : "play.mp4"
+                            },
+                            {
+                                "type" : "file",
+                                "value" : "play1.mp4"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "_data" : {
+            "slider" : {
+                "bcolor" : "yellow",
+                "timer" : "2",
+                "pics" : [
+                    "ub1.jpg","ub2.jpg","ub3.jpg","ub4.png"
+                ]
+            },
+            "adv" : {
+                "bcolor" : "black",
+                "timer" : "10",
+                "videos" : [
+                    "play.mp4",
+                    "play1.mp4"
+                ]
+            }
+        }
+    }
+}

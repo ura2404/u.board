@@ -1,0 +1,37 @@
+{
+    "u.board": {
+        "data": {
+            "name": {
+                "code": "name",
+                "type": "text",
+                "name": "Имя панели",
+                "value": "Основная"
+            },
+            "template": {
+                "code": "template",
+                "type": "menu",
+                "name": "Шаблон",
+                "value": "base",
+                "list": [
+                    "base",
+                    "advansed",
+                    "spring",
+                    "love",
+                    "fuckoff"
+                ]
+            },
+            "SSID": {
+                "code": "SSID",
+                "type": "text",
+                "name": "WIFI SSID",
+                "value": "u.board#"
+            },
+            "pass": {
+                "code": "pass",
+                "type": "text",
+                "name": "WIFI пароль",
+                "value": "12345678"
+            }
+        }
+    }
+}
