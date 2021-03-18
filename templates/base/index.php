@@ -1,12 +1,12 @@
 <?php
     $Root = dirname(__FILE__);
     $Config = json_decode(file_get_contents($Root.'/config.json'),true)['template'];
+
+    $SliderBcolor = $Config['data']['bcolor1']['value'];
+    $SliderTimer = $Config['data']['timer1']['value'];
     
-    $SliderBcolor = $Config['data']['slider']['bcolor'];
-    $SliderTimer = $Config['data']['slider']['timer'];
-    
-    $AdvBcolor = $Config['data']['adv']['bcolor'];
-    $AdvTimer = $Config['data']['adv']['timer'];
+    $AdvBcolor = $Config['data']['bcolor2']['value'];
+    $AdvTimer = $Config['data']['timer2']['value'];
 ?>
 <html>
     <head>
@@ -30,7 +30,7 @@
     <body>
         <div id="adv" style="background-color:<?php echo $AdvBcolor; ?>">
             <?php
-                $Data = $Config['data']['adv']['videos'];
+                $Data = $Config['data']['video']['value'];
                 foreach($Data as $video){
                     echo '<data src="data/adv/' .$video. '"></data>';
                 }
@@ -42,7 +42,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php
-                            $Data = $Config['data']['slider']['pics'];
+                            $Data = $Config['data']['pic']['value'];
                             foreach($Data as $pic){
                                 echo '<li class="splide__slide">';
                                 echo '<img src="data/pics/'. $pic .'">';

@@ -5,7 +5,6 @@ html {
 .cm-home,
 .cm-check {
     font-size: 1.5rem;
-    margin : auto 0;
 }
 
 input,
@@ -48,19 +47,23 @@ select {
 }
 
 body header .cm-control .cm-home {
-    display: inline;
+    visibility : visible;
+    width : auto;
 }
 
 body header .cm-control .cm-check {
-    display: none;
+    visibility : hidden;
+    width : 0;
 }
 
 body.cm-edit header .cm-control .cm-home {
-    display: none;
+    visibility : hidden;
+    width : 0;
 }
 
 body.cm-edit header .cm-control .cm-check {
-    display: inline;
+    visibility : visible;
+    width : auto;
 }
 
 body.cm-edit #main .cm-tpl-edit,

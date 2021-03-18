@@ -5,15 +5,25 @@ var _t = function(cl){
     },1300);
 };
 
-console.log(document.referrer);
+//console.log(document.referrer);
 
 $(document).ready(function(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    
     $('.cm-check').on('click',function(){
+        var Data = urlParams.has('t') ? {
+            m : 't',
+            d : $('.cm-form').serializeArray()
+        } : {
+            m : 'm',
+            d : $('.cm-form').serializeArray()
+        };
+        
         $.ajax({
             method : 'post',
             url : '../admin/post.php',
-            data : $('.cm-form').serializeArray()
-            
+            data : Data
         })
         .done(function(data){
             $('body').removeClass('cm-edit');
@@ -33,8 +43,6 @@ $(document).ready(function(){
     $('.cm-tpl-edit').on('click',function(){
         if($('body').hasClass('cm-edit')) return;
         
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);        
         if(!urlParams.has('t')) window.location.href = document.location + '?t';
     });
 });

@@ -5,6 +5,8 @@
     $Template = json_decode(file_get_contents($Root.'/templates/'.$TemplateCode.'/config.json'),true)['template'];
     //var_dump($Config);die();
     
+    $Home = 'http://'. $_SERVER['SERVER_ADDR'] . '/u.board/admin';
+    
     /*
     //var_dump($Template);
     //var_dump($Root.'/templates/'.$Template.'index.php');
@@ -17,11 +19,23 @@
 
     $_form = function($config){
         $_color = function($code,$data){
-            echo '<input class="h-8" type="color" name="' .$code. '" value="' .$data['value']. '"/>';
+            echo '<input class="cm-edit h-8" type="color" name="' .$code. '" value="' .$data['value']. '"/>';
         };
         
         $_integer = function($code,$data){
-            echo '<input class="h-8" type="text" name="' .$code. '" value="' .$data['value']. '"/>';
+            echo '<input class="cm-edit h-8" type="text" name="' .$code. '" value="' .$data['value']. '"/>';
+        };
+        
+        $_pics = function($code,$data){
+            echo '<div class="col-span-2 flex flex-wrap justify-around">';
+            
+            array_map(function($value){
+                echo '<div class="h-28 w-32 bg-gray-200 my-1 mx-1 flex">';
+                echo '<img class="mx-auto my-auto" src="../data/pics/' .$value. '">';
+                echo '</div>';
+            },$data['value']);
+            
+            echo '</div>';
         };
         
         $_element = function($code,$data) use($_color,$_integer){
@@ -31,14 +45,12 @@
         };
         
         echo '<form class="cm-form grid grid-cols-2 gap-1.5" method="post">';
-        array_map(function($code,$data) use($_element){
-            if($data['type'] === 'group'){
-                echo '<div class="col-span-2 bg-gray-400 text-white">' .$data['name']. '</div>';
-                array_map(function($code,$data) use($_element){
-                    $_element($code,$data);
-                },array_keys($data['list']),array_values($data['list']));
+        array_map(function($code,$data) use($_element,$_pics){
+            if($data['type'] === 'separator'){
                 echo '<div class="col-span-2 h-4"></div>';
+                echo '<div class="col-span-2 bg-gray-400 text-white">' .$data['value']. '</div>';
             }
+            elseif($data['type'] === 'pics') $_pics($code,$data);
             else $_element($code,$data);
         },array_keys($config['data']),array_values($config['data']));
         echo '<form>';
@@ -84,7 +96,7 @@
     };
     
     $_template = function() use($Template,$_form){
-        echo '<div class="grid grid-cols-2 gap-1.5 auto-rows-max mb-6">';
+        echo '<div class="grid grid-cols-2 gap-1.5 auto-rows-max mb-2">';
         echo '<div>Шаблон</div>';
         echo '<div>' .$Template['name']. '</div>';
         echo '<div class="col-span-2 bg-blue-400 text-white">'.$Template['descriptor']. '</div>';
@@ -106,7 +118,7 @@
         <script type="text/javascript" src="../admin/main.js"></script>
     </head>
     <body>
-        <header class="container font-sans mx-auto bg-gray-700 text-white h-10 flex">
+        <header class="container font-sans mx-auto bg-gray-700 text-white h-10 px-3 flex">
             <div class="cm-template flex-grow overflow-x-hidden">
                 <span class="text-2xl whitespace-nowrap">
                     <?php //echo $Config['name']; ?>
@@ -115,8 +127,10 @@
                 </span>
             </div>
             <div class="cm-control text-right flex">
-                <i class="cm-home my-auto fas fa-home"></i>
-                <i class="cm-check my-auto fas fa-2x fa-check"></i>
+                <a class="cm-home my-auto flex h-full" href="<?php echo $Home; ?>">
+                    <i class="fas fa-home my-auto"></i>
+                </a>
+                <i class="cm-check my-auto fas fa-check"></i>
             </div>
         </header>
         <div id="main" class="container mx-auto mt-6 px-3">
