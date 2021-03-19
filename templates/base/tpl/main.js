@@ -1,10 +1,12 @@
 $(document).ready(function(){
     
     var SliderTimer = $("meta[name='slidertimer']").attr('content') * 1000;
+    var SliderCount = $('#splide01-list').length;
+    //var AdvTimer = !SliderCount ? 0 : $("meta[name='advtimer']").attr('content') * 1000;
     var AdvTimer = $("meta[name='advtimer']").attr('content') * 1000;
     var AdvIndex = 0;
     var AdvCount = $('#adv').find('data').length;
-
+    
     var splide = new Splide( '.splide' ,{
         autoplay : true,
         interval : SliderTimer,
@@ -35,17 +37,20 @@ $(document).ready(function(){
     }).mount();
 
     var _fun = function(){
+        if(!AdvCount) return;
+        var ToggleInterval = 1000;
+        
         var I = setInterval(function(){
             clearInterval(I);
             var SliderIndex = splide.index;
-            $('#slider').fadeToggle(1000,function(){
+            $('#slider').fadeToggle(ToggleInterval,function(){
                 var Src = $('#adv').find('data').eq(AdvIndex).attr('src');
                 var Player = '<video autoplay="true" _loop="true" muted="muted"><source src="'+ Src +'" type="video/mp4" /></video>';
                 $('#adv').append(Player).find('video').on('ended',function(){
                     if(++AdvIndex > AdvCount-1) AdvIndex = 0;
                     splide.go(SliderIndex);
                     $(this).remove();
-                    $('#slider').fadeToggle(1000,function(){
+                    $('#slider').fadeToggle(ToggleInterval,function(){
                         _fun();
                     });
                 });

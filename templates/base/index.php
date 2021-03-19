@@ -30,8 +30,9 @@
     <body>
         <div id="adv" style="background-color:<?php echo $AdvBcolor; ?>">
             <?php
-                $Data = $Config['data']['video']['value'];
-                foreach($Data as $video){
+                $Data = $Config['data']['videos']['value'];
+                foreach($Data as $video=>$status){
+                    if(!$status) continue;
                     echo '<data src="data/adv/' .$video. '"></data>';
                 }
             ?>
@@ -42,8 +43,9 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php
-                            $Data = $Config['data']['pic']['value'];
-                            foreach($Data as $pic){
+                            $Data = $Config['data']['pics']['value'];
+                            foreach($Data as $pic=>$status){
+                                if(!$status) continue;
                                 echo '<li class="splide__slide">';
                                 echo '<img src="data/pics/'. $pic .'">';
                                 echo '</li>';

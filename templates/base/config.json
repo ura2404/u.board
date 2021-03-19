@@ -1,58 +1,62 @@
 {
-    "template" : {
-        "code" : "base",
-        "name" : "Базовый",
-        "descriptor" : "Слайдер изображений на весь экран + плеер видероликов.",
-        "data" : {
-            "slider" :{
-                "code" : "slider",
-                "type" : "separator",
-                "value" : "Slider"
+    "template": {
+        "code": "base",
+        "name": "Базовый",
+        "descriptor": "Слайдер + плеер видероликов.",
+        "data": {
+            "slider": {
+                "code": "slider",
+                "type": "separator",
+                "value": "Slider"
             },
-            "bcolor1" : {
-                "code" : "bcolor1",
-                "type" : "color",
-                "name" : "Цвет фона",
-                "value" : "#ffff00"
+            "bcolor1": {
+                "code": "bcolor1",
+                "type": "color",
+                "name": "Цвет фона",
+                "value": "#ffff00"
             },
-            "timer1" : {
-                "code" : "timer1",
-                "type" : "integer",
-                "name" : "Таймер, сек",
-                "value" : "2"
+            "timer1": {
+                "code": "timer1",
+                "type": "integer",
+                "name": "Таймер, сек",
+                "value": "5"
             },
-            "pic" : {
-                "code" : "pic",
-                "type" : "pics",
-                "name" : "Изображения",
-                "value" : [
-                    "ub1.jpg","ub2.jpg","ub3.jpg","ub4.png"
-                ]
+            "pics": {
+                "code": "pics",
+                "type": "array",
+                "name": "Изображения",
+                "value": {
+                    "ub1.jpg": "1",
+                    "ub2.jpg": "1",
+                    "ub3.jpg": "1",
+                    "ub4.png": "1"
+                }
             },
-            "adv" :{
-                "code" : "adv",
-                "type" : "separator",
-                "value" : "Реклама"
+            "adv": {
+                "code": "adv",
+                "type": "separator",
+                "value": "Реклама"
             },
-            "bcolor2" : {
-                "code" : "bcolor",
-                "type" : "color",
-                "name" : "Цвет фона",
-                "value" : "#000000"
+            "bcolor2": {
+                "code": "bcolor",
+                "type": "color",
+                "name": "Цвет фона",
+                "value": "#000000"
             },
-            "timer2" : {
-                "code" : "timer",
-                "type" : "integer",
-                "name" : "Таймер, сек",
-                "value" : "10"
+            "timer2": {
+                "code": "timer",
+                "type": "integer",
+                "name": "Таймер, сек",
+                "value": "10"
             },
-            "video" : {
-                "code" : "video",
-                "type" : "videos",
-                "name" : "Видеоролики",
-                "value" : [
-                    "play.mp4","play1.mp4"
-                ]
+            "videos": {
+                "code": "videos",
+                "type": "array",
+                "name": "Видеоролики",
+                "value": {
+                    "play.mp4": "0",
+                    "play1.mp4": "0"
+                }
             }
         }
     }

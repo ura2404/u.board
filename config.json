@@ -9,7 +9,7 @@
             },
             "template": {
                 "code": "template",
-                "type": "menu",
+                "type": "combo",
                 "name": "Шаблон",
                 "value": "base",
                 "list": [

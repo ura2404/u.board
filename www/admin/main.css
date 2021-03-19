@@ -1,16 +1,11 @@
 html {
-    font-size: 22px;
-}
-
-.cm-home,
-.cm-check {
-    font-size: 1.5rem;
+    font-size: 24px;
 }
 
 input,
 select {
     border :  1px solid lightgrey;
-    padding : 0 5px;
+    /* padding : 0 5px; */
     background-color: white;
     width : 100%;
 }
@@ -32,7 +27,7 @@ select {
 }
 
 #cm-message.cm-ok,
-#cm-message.cm-error{
+#cm-message.cm-error {
     display : flex;
 }
 
@@ -46,27 +41,42 @@ select {
     visibility: visible;
 }
 
-body header .cm-control .cm-home {
-    visibility : visible;
-    width : auto;
+body #header .cm-control .cm-home {
+    /*visibility : visible;
+    width : auto;*/
 }
 
-body header .cm-control .cm-check {
-    visibility : hidden;
-    width : 0;
+body #header .cm-control .cm-check {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    /*visibility : hidden;
+    width : 0;*/
 }
 
-body.cm-edit header .cm-control .cm-home {
-    visibility : hidden;
-    width : 0;
+body.cm-edit #header .cm-control .cm-home {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    /*visibility : hidden;
+    width : 0;*/
 }
 
-body.cm-edit header .cm-control .cm-check {
-    visibility : visible;
-    width : auto;
+body.cm-edit #header .cm-control .cm-check {
+    position: static;
+    top: auto;
+    left: auto;
+    /*visibility : visible;
+    width : auto;*/
 }
 
 body.cm-edit #main .cm-tpl-edit,
-body.cm-edit #power .cm-power {
+body.cm-edit #power .cm-power,
+body.cm-edit #power .cm-reload {
     color : rgb(209, 213, 219);
+}
+
+.cm-pic .cm-on.disable,
+.cm-video .cm-on.disable {
+    color : red;
 }
