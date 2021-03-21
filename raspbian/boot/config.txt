@@ -6,3 +6,8 @@ display_rotate=2 // 180 градусов
 display_rotate=3 // 270 градусов
 display_rotate=0x10000 // горизонтальный переворот 
 display_rotate=0x20000 // вертикальный переворот
+
+....
+
+avoid_warnings=2
+
