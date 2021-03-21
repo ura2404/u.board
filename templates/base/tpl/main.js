@@ -37,7 +37,6 @@ $(document).ready(function(){
     }).mount();
 
     var _fun = function(){
-        if(!AdvCount) return;
         var ToggleInterval = 1000;
         
         var I = setInterval(function(){
@@ -58,5 +57,5 @@ $(document).ready(function(){
         },AdvTimer);
     };
     
-    _fun();
+    if(AdvCount) _fun();
 });

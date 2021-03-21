@@ -5,7 +5,7 @@ var _t = function(cl){
     },1300);
 };
 
-
+/*
 function renderImage(file,tag){
     if(!file.type.startsWith('image/')) return;
     
@@ -25,7 +25,8 @@ function renderImage(file,tag){
     // когда файл считывается он запускает событие OnLoad.
     reader.readAsDataURL(file);    
 }
-
+*/
+/*
 function handleFiles(files){
     var $Template = $('.cm-pic.cm-template');
     
@@ -37,7 +38,8 @@ function handleFiles(files){
       renderImage(file,$A);
     }    
 }
-
+*/
+/*
 function FileUpload(img, file) {
   const reader = new FileReader();
   this.ctrl = createThrobber(img);
@@ -65,6 +67,25 @@ function FileUpload(img, file) {
   reader.readAsBinaryString(file);
 }
 //console.log(document.referrer);
+*/
+
+var _flag = function(value){
+    $.ajax({
+        method : 'post',
+        url : '../admin/flag.php',
+        data : {
+            f : value
+        }
+    })
+    .done(function(data){
+        _t('cm-ok');
+        
+    })
+    .fail(function(data, textStatus, jqXHR){
+        _t('cm-error');
+    });
+    
+};
 
 $(document).ready(function(){
     const queryString = window.location.search;
@@ -72,6 +93,10 @@ $(document).ready(function(){
     
     $('.cm-check').on('click',function(){
         
+        $('.cm-form').submit();
+        return;
+        
+        /*
         //var Imgs = document.querySelectorAll('.cm-newpic');
         var Imgs = $('.cm-newpic');
         console.log(Imgs);
@@ -96,6 +121,7 @@ $(document).ready(function(){
             $('body').removeClass('cm-edit');
             _t('cm-error');
         });
+        */
     });
     
     $('.cm-edit').on('change',function(){
@@ -136,5 +162,12 @@ $(document).ready(function(){
         $('body').addClass('cm-edit');
     });
     
+    $('.cm-reload').on('click',function(){
+        _flag('reload');
+    });
+    
+    $('.cm-power').on('click',function(){
+        _flag('power');
+    });
     
 });

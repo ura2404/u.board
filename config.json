@@ -30,7 +30,19 @@
                 "code": "pass",
                 "type": "text",
                 "name": "WIFI пароль",
-                "value": "12345678"
+                "value": "u.board"
+            },
+            "rotate": {
+                "code": "rotate",
+                "type": "combo",
+                "name": "Поворот",
+                "value": "2",
+                "list": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
             }
         }
     }

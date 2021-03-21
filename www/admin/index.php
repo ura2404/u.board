@@ -37,14 +37,14 @@
             if(isset($html[$code])) echo $html[$code];
             echo '</select>';
             
-            echo '<i class="cm-tpl-edit ml-2 my-auto fas fa-cog text-gray-700 cursor-pointer"></i>';
+            if($code === 'template') echo '<i class="cm-tpl-edit ml-2 my-auto fas fa-cog text-gray-700 cursor-pointer"></i>';
             echo '</div>';
         };
         
         $_pics = function($code,$data){
             echo '<div class="cm-pics col-span-2 mt-5 flex flex-wrap __justify-around justify-center">';
             
-            array_map(function($pic,$status){
+            if(is_array($data['value'])) array_map(function($pic,$status){
                 echo '<div class="cm-pic bg-gray-50 my-1 mx-1 flex flex-col">';
                 
                 echo '  <div class="h-32 w-32"><img class="m-auto mt-0 max-w-full max-h-full __flex-grow" src="../data/pics/' .$pic. '"/></div>';
@@ -59,6 +59,7 @@
             },array_keys($data['value']),array_values($data['value']));
             
             // шаблон для новой картинки
+            /*
             echo '<div class="cm-pic cm-template bg-gray-50 my-1 mx-1 flex flex-col">';
             
             echo '  <div class="h-32 w-32"><img class="m-auto mt-0 max-w-full max-h-full" _src="../data/pics/"/></div>';
@@ -73,9 +74,13 @@
             echo '  <div class="cm-add h-32 w-32 __bg-gray-50 my-1 mx-1 flex cursor-pointer">';
             echo '    <i class="fas fa-3x fa-plus m-auto text-gray-400"></i>';
             echo '  </div>';
+            */
+            // шаблон
             
-            echo '  <input class="cm-files" type="file" style="display:none" accept="image/*" multiple onchange="handleFiles(this.files)"/>';
-            echo '  <input name="file" class="__cm-files" type="file" accept="image/*" multiple"/>';
+            //echo '  <input class="cm-files" type="file" style="display:none" accept="image/*" multiple onchange="handleFiles(this.files)"/>';
+            echo '  <div class="px-3 py-10">';
+            echo '    <input name="pics[]" class="cm-edit" type="file" accept="image/*" multiple="multiple"/>';
+            echo '  </div>';
             
             echo '</div>';
         };
@@ -83,7 +88,7 @@
         $_videos = function($code,$data){
             echo '<div class="cm-videos col-span-2 mt-5 flex flex-wrap __justify-around justify-center">';
             
-            array_map(function($video,$status){
+            if(is_array($data['value'])) array_map(function($video,$status){
                 echo '<div class="cm-video bg-gray-50 my-1 mx-1 flex flex-col justify-between">';
                 echo '<div class="h-32 w-40">';
                 echo '<video class="__flex-grow" controls __autoplay="true" _loop="true" __muted="muted"><source src="../data/adv/' .$video.'" type="video/mp4" /></video>';                
@@ -96,13 +101,18 @@
                 echo '</div>';
                 
                 echo '</div>';
-
             },array_keys($data['value']),array_values($data['value']));
             
+            /*
             echo '<div class="cm-add h-32 w-32 __bg-gray-50 my-1 mx-1 flex">';
             echo '<i class="fas fa-3x fa-plus m-auto text-gray-400"></i>';
             echo '</div>';
+            */
             
+            echo '  <div class="px-3 py-10">';
+            echo '    <input name="videos[]" class="cm-edit" type="file" accept="video/*" multiple="multiple"/>';
+            echo '  </div>';
+
             echo '</div>';
         };
         
@@ -115,9 +125,10 @@
         };
         
         // --- --- --- ---
-        echo '<form class="cm-form grid grid-cols-2 gap-1.5" method="post">';
+        echo '<form class="cm-form grid grid-cols-2 gap-1.5" method="post" enctype="multipart/form-data" action="post.php">';
         echo '<input type="hidden" name="m" value="' .$mode. '"/>';
         array_map(function($code,$data) use($_element,$_pics,$_videos){
+            if($code{0} === '_') return;
             if($data['type'] === 'separator'){
                 echo '<div class="col-span-2 h-4"></div>';
                 echo '<div class="col-span-2 bg-gray-400 text-white px-3">' .$data['value']. '</div>';
@@ -142,16 +153,32 @@
             
             $Templates = array_combine($TemplateCodes,$TemplateNames);
             
-            $Arr = array_map(function($code,$name) use($TemplateCode,$_template){
+            $Arr = array_map(function($code,$name) use($TemplateCode){
                 return '<option value="' .$code. '"' .($TemplateCode === $code ? 'selected="selected"' : null). '>' .$name. '</option>';
             },array_keys($Templates),array_values($Templates));
             
             return implode('',$Arr);
         };
         
+        $_rotate = function() use($Config){
+            $Arr =  [
+                0 => 0,
+                1 => 90,
+                2 => 180,
+                3 => 270
+            ];
+            
+            $Rotate = $Config['data']['rotate']['value'];
+            
+            return implode('',array_map(function($key,$value) use($Rotate){
+                return '<option value="' .$key. '"' .($key == $Rotate ? 'selected="selected"' : null). '>' .$value. '</option>';
+            },array_keys($Arr),array_values($Arr)));
+        };
+        
         
         $_form('m',$Config,[
-            'template' => $_templates()
+            'template' => $_templates(),
+            'rotate' => $_rotate(),
         ]);
     };
     
@@ -194,9 +221,9 @@
         </div>
         
         <?php if(!isset($_GET['t'])) {?>
-        <div id="power" class="flex flex-row mt-10 mb-10 justify-around">
-            <i class="cm-reload fas fa-3x fa-sync-alt m-auto cursor-pointer"></i>
-            <i class="cm-power fas fa-3x fa-power-off m-auto cursor-pointer"></i>
+        <div id="power" class="flex flex-row mt-5 mb-5 justify-around">
+            <i class="cm-reload fas fa-3x fa-sync-alt m-auto cursor-pointer p-5 hover:bg-gray-200"></i>
+            <i class="cm-power fas fa-3x fa-power-off m-auto cursor-pointer p-5 hover:bg-gray-200"></i>
         </div>
         <?php } ?>
         

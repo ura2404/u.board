@@ -31,9 +31,9 @@
         <div id="adv" style="background-color:<?php echo $AdvBcolor; ?>">
             <?php
                 $Data = $Config['data']['videos']['value'];
-                foreach($Data as $video=>$status){
+                if(is_array($Data)) foreach($Data as $video=>$status){
                     if(!$status) continue;
-                    echo '<data src="data/adv/' .$video. '"></data>';
+                    echo '<data src="data/videos/' .$video. '"></data>';
                 }
             ?>
         </div>
