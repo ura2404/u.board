@@ -5,4 +5,5 @@
 # /home/pi/u.board/cron.start.sh
 
 /usr/bin/chromium-browser --kiosk http://localhost/u.board
+#/usr/bin/chromium-browser --no-sandbox http://localhost/u.board
 

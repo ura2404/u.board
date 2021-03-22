@@ -1,1 +1,1 @@
-/mnt/md1/home/ura/__WORK__/u.board/templates/base/index.php
+../templates/base/index.php

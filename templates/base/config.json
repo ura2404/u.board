@@ -2,7 +2,7 @@
     "template": {
         "code": "base",
         "name": "Базовый",
-        "descriptor": "Слайдер + плеер видероликов.",
+        "descriptor": "Слайдер + плеер видеороликов.",
         "data": {
             "slider": {
                 "code": "slider",
@@ -13,7 +13,7 @@
                 "code": "bcolor1",
                 "type": "color",
                 "name": "Цвет фона",
-                "value": "#00ffe1"
+                "value": "#2ca600"
             },
             "timer1": {
                 "code": "timer1",
@@ -25,9 +25,7 @@
                 "code": "pics",
                 "type": "array",
                 "name": "Изображения",
-                "value": {
-                    "ub1.jpg": 1
-                }
+                "value": null
             },
             "adv": {
                 "code": "adv",
@@ -50,9 +48,7 @@
                 "code": "videos",
                 "type": "array",
                 "name": "Видеоролики",
-                "value": {
-                    "play.mp4": 1
-                }
+                "value": null
             }
         }
     }
