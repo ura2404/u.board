@@ -7,13 +7,13 @@
             "slider": {
                 "code": "slider",
                 "type": "separator",
-                "value": null
+                "value": "Slider"
             },
             "bcolor1": {
                 "code": "bcolor1",
                 "type": "color",
                 "name": "Цвет фона",
-                "value": "#ffff00"
+                "value": "#000000"
             },
             "timer1": {
                 "code": "timer1",
@@ -25,15 +25,12 @@
                 "code": "pics",
                 "type": "array",
                 "name": "Изображения",
-                "value": {
-                    "ub4.png": "1",
-                    "ub1.jpg": "1"
-                }
+                "value": null
             },
             "adv": {
                 "code": "adv",
                 "type": "separator",
-                "value": null
+                "value": "Video"
             },
             "bcolor2": {
                 "code": "bcolor",
@@ -45,16 +42,13 @@
                 "code": "timer",
                 "type": "integer",
                 "name": "Таймер, сек",
-                "value": "10"
+                "value": "15"
             },
             "videos": {
                 "code": "videos",
                 "type": "array",
                 "name": "Видеоролики",
-                "value": {
-                    "play.mp4": "1",
-                    "play1.mp4": 1
-                }
+                "value": null
             }
         }
     }

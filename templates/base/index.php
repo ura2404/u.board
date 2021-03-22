@@ -4,6 +4,7 @@
 
     $SliderBcolor = $Config['data']['bcolor1']['value'];
     $SliderTimer = $Config['data']['timer1']['value'];
+    $SliderCount = count($Config['data']['pics']['value']);
     
     $AdvBcolor = $Config['data']['bcolor2']['value'];
     $AdvTimer = $Config['data']['timer2']['value'];
@@ -37,24 +38,24 @@
                 }
             ?>
         </div>
-        
-        <div id="slider" style="background-color:<?php echo $SliderBcolor; ?>">
-            <div class="splide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php
-                            $Data = $Config['data']['pics']['value'];
-                            foreach($Data as $pic=>$status){
-                                if(!$status) continue;
-                                echo '<li class="splide__slide">';
-                                echo '<img src="data/pics/'. $pic .'">';
-                                echo '</li>';
-                            }
-                        ?>
-                    </ul>
+        <?php if($SliderCount){ ?>
+            <div id="slider" style="background-color:<?php echo $SliderBcolor; ?>">
+                <div class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <?php
+                                $Data = $Config['data']['pics']['value'];
+                                foreach($Data as $pic=>$status){
+                                    if(!$status) continue;
+                                    echo '<li class="splide__slide">';
+                                    echo '<img src="data/pics/'. $pic .'">';
+                                    echo '</li>';
+                                }
+                            ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        
+        <?php } ?>
     </body>
 </html>

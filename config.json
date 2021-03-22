@@ -24,13 +24,13 @@
                 "code": "SSID",
                 "type": "text",
                 "name": "WIFI SSID",
-                "value": "u.board1"
+                "value": "u.board#1"
             },
             "pass": {
                 "code": "pass",
                 "type": "text",
                 "name": "WIFI пароль",
-                "value": "u.board"
+                "value": "u.board@"
             },
             "rotate": {
                 "code": "rotate",

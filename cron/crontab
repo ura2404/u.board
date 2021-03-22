@@ -1,3 +1,14 @@
 MAILTO=""
 
 * * * * * /home/pi/u.board/cron/flag.sh
+* * * * * sleep 5; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 10; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 15; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 20; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 25; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 30; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 35; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 40; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 45; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 50; /home/pi/u.board/cron/flag.sh
+* * * * * sleep 55; /home/pi/u.board/cron/flag.sh

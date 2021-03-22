@@ -3,19 +3,8 @@
     $Config = json_decode(file_get_contents($Root.'/config.json'),true)['u.board'];
     $TemplateCode = json_decode(file_get_contents($Root.'/config.json'),true)['u.board']['data']['template']['value'];
     $Template = json_decode(file_get_contents($Root.'/templates/'.$TemplateCode.'/config.json'),true)['template'];
-    //var_dump($Config);die();
     
     $Home = 'http://'. $_SERVER['SERVER_ADDR'] . '/u.board/admin';
-    
-    /*
-    //var_dump($Template);
-    //var_dump($Root.'/templates/'.$Template.'index.php');
-    
-    chdir($Root.'/www');
-    symlink($Root.'/templates/'.$Template.'/index.php','index.php');
-    symlink($Root.'/templates/'.$Template.'/data','data');
-    symlink($Root.'/templates/'.$Template.'/tpl','tpl');
-    */
 
     $_form = function($mode,$config,$html=[]){
         $_color = function($code,$data){
@@ -58,26 +47,6 @@
                 echo '</div>';
             },array_keys($data['value']),array_values($data['value']));
             
-            // шаблон для новой картинки
-            /*
-            echo '<div class="cm-pic cm-template bg-gray-50 my-1 mx-1 flex flex-col">';
-            
-            echo '  <div class="h-32 w-32"><img class="m-auto mt-0 max-w-full max-h-full" _src="../data/pics/"/></div>';
-            
-            echo '  <div class="flex justify-between">';
-            echo '    <div class="cm-size text-sm"></div>';
-            echo '      <i class="cm-del far fa-trash-alt text-gray-500 cursor-pointer"></i>';
-            echo '    </div>';
-            echo '  </div>';
-            
-            
-            echo '  <div class="cm-add h-32 w-32 __bg-gray-50 my-1 mx-1 flex cursor-pointer">';
-            echo '    <i class="fas fa-3x fa-plus m-auto text-gray-400"></i>';
-            echo '  </div>';
-            */
-            // шаблон
-            
-            //echo '  <input class="cm-files" type="file" style="display:none" accept="image/*" multiple onchange="handleFiles(this.files)"/>';
             echo '  <div class="px-3 py-10">';
             echo '    <input name="pics[]" class="cm-edit" type="file" accept="image/*" multiple="multiple"/>';
             echo '  </div>';
@@ -102,12 +71,6 @@
                 
                 echo '</div>';
             },array_keys($data['value']),array_values($data['value']));
-            
-            /*
-            echo '<div class="cm-add h-32 w-32 __bg-gray-50 my-1 mx-1 flex">';
-            echo '<i class="fas fa-3x fa-plus m-auto text-gray-400"></i>';
-            echo '</div>';
-            */
             
             echo '  <div class="px-3 py-10">';
             echo '    <input name="videos[]" class="cm-edit" type="file" accept="video/*" multiple="multiple"/>';
