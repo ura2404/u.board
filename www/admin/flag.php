@@ -2,9 +2,9 @@
     $Root = realpath(dirname(__FILE__).'/../..');
     $Flag = $_POST['f'];
     
-    $Path = $Root.'/flag/'.$Flag;
+    $Path = $Root.'/flag';
     
     $Files = scandir($Path);
     
-    if(!count($Files)) file_put_contents($Path,$Flag);
+    if(count($Files)==2) file_put_contents($Path.'/'.$Flag,$Flag);
 ?>
