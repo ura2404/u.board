@@ -6,26 +6,27 @@ function wifi() {
     SSID=`php -f $ROOT/cron/get.php SSID`
     pass=`php -f $ROOT/cron/get.php pass`
 
-    cat /etc/hostapd/hostapd.conf | grep -v -e ssid -e wpa_passphrase > /tmp/hostapd.conf
-    echo 'ssid='$SSID >> /tmp/hostapd.conf
-    echo 'wpa_passphrase='$pass >> /tmp/hostapd.conf
+    cat /etc/hostapd/hostapd.conf | grep -v -e ssid -e wpa_passphrase > _hostapd.conf
+    [ -s _hostapd.conf ] || return
 
-    mv /tmp/hostapd.conf /etc/hostapd/hostapd.conf
+    echo 'ssid='$SSID >> _hostapd.conf
+    echo 'wpa_passphrase='$pass >> _hostapd.conf
 
-
-    #a=`cat $ROOT/config.json | jq '.[]' | select".u.board.data.SSID.value" | sed 's/\"//g'`
-    #echo $a
+    mv _hostapd.conf /etc/hostapd/hostapd.conf
 }
 
 function rotate() {
     rotate=`php -f $ROOT/cron/get.php rotate`
     echo $rotate
 
-    cat /boot/config.txt | grep -v -e display_rotate > /tmp/config.txt
-    echo 'display_rotate='$rotate >> /tmp/config.txt
+    cat /boot/config.txt | grep -v -e display_rotate > _config.txt
+    [ -s _config.txt ] || return
 
-    mv /tmp/config.txt /boot/config.txt
+    echo 'display_rotate='$rotate >> _config.txt
+
+    mv _config.txt /boot/config.txt
 }
+
 
 if [ -f /home/pi/u.board/flag/reload ]; then
     wifi
