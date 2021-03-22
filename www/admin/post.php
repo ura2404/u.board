@@ -64,7 +64,7 @@
             return $value == '.' || $value == '..' ? false : true;
         });
 
-        array_map(function($file) use($tag,$Template,$Files,$Root){
+        array_map(function($file) use($tag,$Template,$Files,$Root,$Path){
             if(!array_key_exists($file,$Template['template']['data'][$tag]['value'])) unlink($Path.'/'.$file);
         },$Files);
     };
