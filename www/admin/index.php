@@ -91,7 +91,7 @@
             if(is_array($data['value'])) array_map(function($video,$status){
                 echo '<div class="cm-video bg-gray-50 my-1 mx-1 flex flex-col justify-between">';
                 echo '<div class="h-32 w-40">';
-                echo '<video class="__flex-grow" controls __autoplay="true" _loop="true" __muted="muted"><source src="../data/adv/' .$video.'" type="video/mp4" /></video>';                
+                echo '<video class="__flex-grow" controls __autoplay="true" _loop="true" __muted="muted"><source src="../data/videos/' .$video.'" type="video/mp4" /></video>';                
                 echo '</div>';
                 echo '<input type="hidden" name="videos[' .$video. ']" value="' .$status. '"/>';
                 

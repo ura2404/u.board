@@ -2,6 +2,10 @@
     $Mode = $_POST['m'];
     unset($_POST['m']);
     $Data = $_POST;
+
+    file_put_contents('/var/tmp/0000','qaz');
+    file_put_contents('/var/tmp/111',serialize($_POST));
+    file_put_contents('/var/tmp/222',print_r($_FILES,1));
     
     //var_dump('=============================================================');
     //echo '<pre>'.print_r($_FILES,1).'</pre>';
@@ -11,6 +15,7 @@
     //die();
 
     $Root = realpath(dirname(__FILE__).'/../..');
+
     /*
     $ConfigFile = $Root.'/config.json';
     $Config = json_decode(file_get_contents($ConfigFile),true);
