@@ -7,13 +7,13 @@
             "slider": {
                 "code": "slider",
                 "type": "separator",
-                "value": "Slider"
+                "value": null
             },
             "bcolor1": {
                 "code": "bcolor1",
                 "type": "color",
                 "name": "Цвет фона",
-                "value": "#000000"
+                "value": "#df2626"
             },
             "timer1": {
                 "code": "timer1",
@@ -25,12 +25,14 @@
                 "code": "pics",
                 "type": "array",
                 "name": "Изображения",
-                "value": null
+                "value": {
+                    "1.jpeg": 1
+                }
             },
             "adv": {
                 "code": "adv",
                 "type": "separator",
-                "value": "Video"
+                "value": null
             },
             "bcolor2": {
                 "code": "bcolor",

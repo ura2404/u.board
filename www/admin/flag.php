@@ -4,7 +4,7 @@
     
     $Path = $Root.'/flag';
     
-    $Files = scandir($Path);
-    
-    if(count($Files)==2) file_put_contents($Path.'/'.$Flag,$Flag);
+    $Files = array_filter(scandir($Path),function($file){ return !($file == '.' || $file == '..' || $file{0} == '.'); });
+
+    if(!count($Files)) file_put_contents($Path.'/'.$Flag,$Flag);
 ?>

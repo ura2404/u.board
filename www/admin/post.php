@@ -35,7 +35,7 @@
         $_put = function($tag,$folder) use($_prepare){
             $Ret = [ $tag =>[] ];
             $Files = $_prepare($tag);
-
+            
             foreach($Files as $file){
                 $Src = $file['tmp'];
                 $Dst = $folder.'/'.$file['name'];
@@ -57,13 +57,12 @@
         $TemplateCode = $Config['u.board']['data']['template']['value'];
         $TemplateName = $Root.'/templates/'.$TemplateCode.'/config.json';
         $Template = json_decode(file_get_contents($TemplateName),true);
-
-
+        
         $Path = $Root.'/www/data/'.$tag;
         $Files = array_filter(scandir($Path),function($value){
-            return $value == '.' || $value == '..' ? false : true;
+            return $value == '.' || $value == '..' || $value{0} == '.' ? false : true;
         });
-
+        
         array_map(function($file) use($tag,$Template,$Files,$Root,$Path){
             if(!array_key_exists($file,$Template['template']['data'][$tag]['value'])) unlink($Path.'/'.$file);
         },$Files);

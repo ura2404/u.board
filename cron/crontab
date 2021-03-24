@@ -1,6 +1,6 @@
 MAILTO=""
 
-* * * * * /home/pi/u.board/cron/flag.sh
+* * * * * sleep 0; /home/pi/u.board/cron/flag.sh
 * * * * * sleep 5; /home/pi/u.board/cron/flag.sh
 * * * * * sleep 10; /home/pi/u.board/cron/flag.sh
 * * * * * sleep 15; /home/pi/u.board/cron/flag.sh

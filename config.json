@@ -24,7 +24,7 @@
                 "code": "SSID",
                 "type": "text",
                 "name": "WIFI SSID",
-                "value": "u.board#1"
+                "value": "u.board#"
             },
             "pass": {
                 "code": "pass",
