@@ -1,0 +1,3 @@
+MAILTO=""
+
+@reboot /usr/bin/python ~/u.board/raspbian/bandles/a-board/bin/start.py

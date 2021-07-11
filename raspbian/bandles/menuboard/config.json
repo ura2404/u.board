@@ -1,0 +1,56 @@
+{
+    "u.board": {
+        "bundle" : {
+            "value" : "a-board"
+            "list" : [
+                "menuboard",
+                "a-board"
+            ]
+        },
+        "data": {
+            "name": {
+                "code": "name",
+                "type": "text",
+                "name": "Имя панели",
+                "value": "Основная"
+            },
+            "template": {
+                "code": "template",
+                "type": "combo",
+                "name": "Шаблон",
+                "value": "base",
+                "list": [
+                    "base",
+                    "advansed",
+                    "spring",
+                    "love",
+                    "fuckoff"
+                ]
+            },
+            "SSID": {
+                "code": "SSID",
+                "type": "text",
+                "name": "WIFI SSID",
+                "value": "u.board#"
+            },
+            "pass": {
+                "code": "pass",
+                "type": "text",
+                "name": "WIFI пароль",
+                "value": "u.board@"
+            },
+            "rotate": {
+                "code": "rotate",
+                "type": "combo",
+                "name": "Поворот",
+                "value": "0",
+                "list": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            }
+        }
+    }
+}
