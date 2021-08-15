@@ -1,0 +1,4 @@
+# add ti section [all] this params
+# display_rotate=0
+# avoid_warnings=2
+

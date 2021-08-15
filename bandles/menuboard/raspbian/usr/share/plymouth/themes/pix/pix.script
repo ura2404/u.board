@@ -1,0 +1,3 @@
+# edit param "theme_image", write picture filename
+# for example:
+# theme_image = Image("u.board.png");
