@@ -1,1 +1,5 @@
+@xset s off
+@xset -dpms
+@xset s noblank
+@xmodmap -e "keycode 64 = "
 /home/pi/u.board/cron/chrome.sh
