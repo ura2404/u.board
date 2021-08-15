@@ -1,0 +1,23 @@
+1. сменить пароль pi
+
+2. спрятать cursor
+
+>$ sudo apt install unclutter
+  - <file /etc/default/unclutter>
+      EXTRA_OPTS="-idle 1 -root" // 1 секунда
+    </file>
+
+
+3. настроить apache2
+  - скопировть config
+  - sudo -s /home/pi/u.board/bandles/p-board/raspbian/var/www/u.board/ /var/www/u.board
+
+4. www-data sudo + gpio
+  - >$ sudo usermod -aG sudo www-data
+  - >$ sudo usermod -aG gpio www-data
+  - <file /etc/sudousers>
+      www-data ALL=NOPASSWD:/var/www/u.board/res/g.php
+    </file>
+
+5. Тёмна тема chrome
+  - https://chrome.google.com/webstore/detail/material-incognito-dark-t/ahifcnpnjgbadkjdhagpfjfkmlapfoel?hl=en

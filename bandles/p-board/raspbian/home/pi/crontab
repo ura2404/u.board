@@ -1,0 +1,5 @@
+MAILTO=""
+@reboot sudo ~/u.board/cront/gpio.sh
+@reboot /usr/bin/chromium-browser --kiosk http://localhost/u.board
+
+
