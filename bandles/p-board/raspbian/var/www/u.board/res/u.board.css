@@ -15,7 +15,7 @@ body {
 }
 
 .hidden {
-    display : none;
+    display : none !important;
 }
 
 .atom {
@@ -48,16 +48,26 @@ body {
 .input,
 .alert,
 .success {
-    transition: .55s opacity, .55s visibility;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
 }
 
-.text {
-    margin: auto auto 0 auto;
+.input .text,
+.input .pass {
+    margin: auto;
 }
 
-.pass {
-    margin: 0 auto auto auto;
+.input .pass,
+.alert .hh,
+.success .hh {
     height : 3rem;
+}
+
+.input,
+.alert,
+.success {
+    transition: .55s opacity, .55s visibility;
 }
 
 .alert,
@@ -68,5 +78,6 @@ body {
 
 .alert.show,
 .success.show {
+    display: flex !important;
     opacity : 1;
 }

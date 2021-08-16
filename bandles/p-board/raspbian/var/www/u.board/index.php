@@ -6,10 +6,18 @@ $Timeout = $Config['timeout'];
 
 $Body = '<div class="atom"></div>
 <div class="container">
-    <div class="text input">Введите пароль</div>
-    <div class="pass input" data-len="' .strlen($Pass). '" data-pass="' .md5($Pass). '" data-timeout="' .$Timeout. '"></div>
-    <div class="alert hidden">Пароль неверный</div>
-    <div class="success hidden">Верный ввод пароля</div>
+    <div class="input">
+        <div class="text">Введите пароль</div>
+        <div class="pass" data-len="' .strlen($Pass). '" data-pass="' .md5($Pass). '" data-timeout="' .$Timeout. '"></div>
+    </div>
+    <div class="alert hidden">
+        <div>Пароль неверный</div>
+        <div class="hh"></div>
+    </div>
+    <div class="success hidden">
+        <div>Верный ввод пароля</div>
+        <div class="hh"></div>
+    </div>
 </div>';
 
 print '<html>

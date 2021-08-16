@@ -9,7 +9,7 @@ $(document).ready(function(){
     PassValue = $('.pass').data('pass'),
     Timeout =  $('.pass').data('timeout'),
     _timer = function(){
-        var Timer = setTimeout(()=>{
+        var Timer = setTimeout(() => {
             location.reload();
         },Timeout * 1000)
     },
