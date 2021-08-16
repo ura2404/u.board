@@ -3,10 +3,8 @@
 2. спрятать cursor
 
 >$ sudo apt install unclutter
-  - <file /etc/default/unclutter>
+  - file: /etc/default/unclutter
       EXTRA_OPTS="-idle 1 -root" // 1 секунда
-    </file>
-
 
 3. настроить apache2
   - скопировть config
@@ -15,9 +13,13 @@
 4. www-data sudo + gpio
   - >$ sudo usermod -aG sudo www-data
   - >$ sudo usermod -aG gpio www-data
-  - <file /etc/sudousers>
+  - file: /etc/sudousers
       www-data ALL=NOPASSWD:/var/www/u.board/res/g.php
-    </file>
+
+5. сформировать /boot/u.board/config.json
+  - >$ sudo mkdir /boot/u.board/
+  - >$ sudo cp /home/pi/u.board/bandles/p-board/raspbian/boot/u.board/config.json /boot/u.board/
+  - >$ sudo ln -s /boot/u.board/config.json /home/pi/u.board/config.json
 
 5. Тёмна тема chrome
   - https://chrome.google.com/webstore/detail/material-incognito-dark-t/ahifcnpnjgbadkjdhagpfjfkmlapfoel?hl=en
