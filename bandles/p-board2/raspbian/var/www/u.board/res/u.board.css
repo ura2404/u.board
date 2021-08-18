@@ -1,0 +1,119 @@
+html {
+    font-family: Arial, serif;
+    font-size: 16px;
+}
+
+body {
+    margin : 0;
+    padding : 0;
+    color : lightgrey;
+    width : 100vw;
+    height : 100vh;
+    background-color : black;
+}
+
+.hidden {
+    display : none !important;
+}
+
+
+body:not(.alert) .container .input .text,
+body:not(.success) .container .input .text, {
+}
+
+body.alert .container .input .text {
+    color : #ff6c6c;
+}
+
+
+body.success .container .input .text {
+    color : #37ca36;
+}
+
+body.alert .mask {
+    background-color : rgba(255,0,0,0.3);
+}
+
+body.success .mask {
+    background-color : rgba(0,255,0,0.3);
+}
+
+.atom {
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    background-color : transparent;
+    background-image : url('atom.gif');
+    background-repeat: no-repeat;
+    z-index : -2;
+}
+
+.honey {
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    background-color : transparent;
+    background-image : url('honey.jpg');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    z-index : -2;
+}
+
+.mask {
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    background-color : rgba(0,0,0,0.5);
+    z-index : -1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width : 100%;
+    height : 100%;
+    font-size: 3rem;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    transition: .55s opacity, .55s visibility;
+}
+
+.input .text {
+    margin: auto;
+    text-align : center;
+    color : grey;
+}
+
+.input .pass {
+    border-bottom: 1px solid;
+    padding-bottom : 10px;
+    width: 26rem;
+    height: 3rem;
+    margin: 35px auto 35px auto;
+    text-align: center;
+}
+
+.example {
+    display: flex;
+    margin : 0 auto;
+}
+
+.example .item {
+    color: grey;
+    border: 1px solid;
+    padding: 4px;
+    width: 7rem;
+    text-align: center;
+    margin : 0 10px;
+    border-radius: 7px;
+}

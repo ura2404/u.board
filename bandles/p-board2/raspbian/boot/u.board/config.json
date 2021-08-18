@@ -1,0 +1,6 @@
+{
+    "pass" : [4,14,31],
+    "example" : ["Be","Si","Ga"],
+    "gpio" : 4,
+    "timeout" : 5
+}
