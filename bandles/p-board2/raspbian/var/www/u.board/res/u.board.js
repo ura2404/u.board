@@ -31,6 +31,7 @@ $(document).ready(function(){
         $('body').off('keydown').addClass('success');;
         $.post('res/g.php?1');
         $Text.text('Верный ввод пароля');
+        _timer();
 
         /*$Input.hide(0,() => {
             $Success.show(0,() => {
